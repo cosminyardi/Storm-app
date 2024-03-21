@@ -1,0 +1,11 @@
+SELECT a.UPropertyID, a.PropertyID, a.PropertyName, a.PropertyStatus, b.LoanType
+FROM dbo.Property a
+JOIN dbo.SalesComp b
+ON a.UPropertyID = b.UPropertyID
+WHERE
+a.PrimaryUseType = 'SelfStorage'
+AND
+a.NoShowReason = 'Self Storage Markets'
+AND  a.PropertyStatus IN ('Planned', 'Prospective')
+AND
+b.LoanType IN ('Permanent' , 'Construction' , 'Line of Credit')
