@@ -1,0 +1,9 @@
+SELECT p.PropertyID, p.MarketID, p.PropertyName, sc.LoanType, sc.LoanTypeID
+FROM dbo.Property p
+   LEFT JOIN dbo.SalesComp sc
+               ON p.PropertyID = sc.PropertyID
+               AND p.MarketID = sc.MarketID
+WHERE p.PrimaryUseType = 'SelfStorage'
+AND p.NoShowReason = 'Self Storage Markets'
+AND p.PropertyStatus = 'Under Construction'
+AND sc.LoanType is NULL
