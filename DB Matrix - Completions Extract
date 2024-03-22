@@ -1,0 +1,11 @@
+SELECT p.PropertyID, p.MarketID, p.PropertyStatus
+FROM dbo.Property p
+   JOIN dbo.TrackDates td
+               ON p.PropertyID = td.ObjectID
+               AND p.MarketID = td.MarketID
+WHERE p.PrimaryUseType = 'SelfStorage'
+AND p.PropertyStatus = 'Under Construction'
+AND p.StatusDate = p.CompletedDate
+AND td.TableID = 'Property QC'
+AND td.TypeName = 'Conduit'
+AND td.FollowDate = '01/01/1900'
