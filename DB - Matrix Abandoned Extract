@@ -1,0 +1,14 @@
+SELECT a.UPropertyID, a.PropertyID, a.PropertyName, a.StatusDate, a.PropertyStatus, b.TypeName
+FROM dbo.Property a
+JOIN dbo.TrackDates b
+ON a.PropertyID = b.ObjectID
+AND
+a.MarketID = b.MarketID
+WHERE
+a.PrimaryUseType = 'SelfStorage'
+AND
+b.TypeName = 'Conduit'
+AND
+b.TableID = 'Property QC'
+AND PropertyStatus = 'Abandoned'
+AND b.FollowDate IS NULL
